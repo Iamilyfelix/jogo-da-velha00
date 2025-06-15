@@ -20,3 +20,5 @@ O principal objetivo deste trabalho é **aprender e praticar conceitos fundament
 - CSS
 - JavaScript
 
+## 🎮 Teste
+-  https://iamilyfelix.github.io/jogo-da-velha00/

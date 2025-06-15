@@ -1,0 +1,56 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a0033, #32004d);
+    font-family: cursive;
+}
+
+h1 {
+    font-size: 50px;
+    color: #867f8d;
+}
+
+.tabuleiro {
+    color: #867f8d;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 2px solid #867f8d;
+    font-size: 48px;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#vez,
+#vencedor {
+    color: #867f8d;
+    margin: 10px;
+    font-size: 20px;
+}
+
+#reiniciar {
+    border-radius: 5px;
+    background-color: #32004d;
+    color: #867f8d;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.box:hover {
+    background-color: #1a0033;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo da Velha</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Jogo da Velha</h1>
+
+  <div id="vez">Vez do jogador: X</div>
+  <div class="tabuleiro">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+  <div id="vencedor"></div>
+  <button id="reiniciar">Reiniciar</button>
+
+  <script>
+    let jogador = "X";
+    const boxes = document.querySelectorAll(".box");
+    const vezTexto = document.getElementById("vez");
+    const vencedorTexto = document.getElementById("vencedor");
+    const btnReiniciar = document.getElementById("reiniciar");
+
+    let fimDeJogo = false;
+
+    boxes.forEach((box, index) => {
+      box.addEventListener("click", () => {
+        if (box.textContent === "" && !fimDeJogo) {
+          box.textContent = jogador;
+          const vencedor = verificarVitoria();
+          if (vencedor) {
+            vencedorTexto.textContent = `🏆 Jogador ${vencedor} venceu!`;
+            fimDeJogo = true;
+            // 🎉 Chuva de confetes
+            confetti({
+              particleCount: 150,
+              spread: 70,
+              origin: { y: 0.6 }
+            });
+          } else {
+            if (jogador === "X") {
+              jogador = "O";
+            } else {
+              jogador = "X";
+            }
+            atualizarVez();
+          }
+        }
+      });
+    });
+
+    btnReiniciar.addEventListener("click", () => {
+      boxes.forEach(box => (box.textContent = ""));
+      jogador = "X";
+      fimDeJogo = false;
+      vencedorTexto.textContent = "";
+      atualizarVez();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
